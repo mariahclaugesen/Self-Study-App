@@ -9,17 +9,20 @@ public class QuestionData {
     /** Minimum number of answers. */
     private final static int MIN_ANSWERS = 2;
 
-    /** Maximum number of answers. */
+    /** Maximum number of answers. Can change if needed. */
     private final static int MAX_ANSWERS = 6;
 
     /** The question being asked. */
     private String question;
 
-    /** The answers to the question. */
-    private List<String> answers;
+    /** The available answers to the question. */
+    private List<String> possibleAnswers;
 
-    /** The user's responses to the question. */
-    private List<String> responses;
+    /** The user's choices of answers to the question. */
+    private List<String> chosenAnswers = new ArrayList<>(0);
+
+    /** The frequencies of each answer. */
+    private List<Frequency> frequencies;
 
     /** Constructor which sets questions and answers.
      *
@@ -27,7 +30,7 @@ public class QuestionData {
      * @param setAnswers what the answers should be
      */
     QuestionData(final String setQuestion, final List<String> setAnswers) {
-        if (setQuestion == null || setAnswers == null) {
+        if (setQuestion == null || setAnswers == null || setAnswers.contains(null)) {
             throw new IllegalArgumentException("inputs should not be null");
         }
         if (setAnswers.size() < MIN_ANSWERS || setAnswers.size() > MAX_ANSWERS) {
@@ -35,18 +38,20 @@ public class QuestionData {
                     + MIN_ANSWERS + " and " + MAX_ANSWERS + " answers");
         }
         question = setQuestion;
-        answers = setAnswers;
+        possibleAnswers = setAnswers;
+        setFrequencies();
     }
 
     /** Add a response.
      *
-     * @param response the response to add
+     * @param answer the response to add
      */
-    public void addResponse(final String response) {
-        if (!answers.contains(response)) {
-            throw new IllegalArgumentException(response + " is not a valid answer");
+    public void addAnswer(final String answer) {
+        if (!possibleAnswers.contains(answer)) {
+            throw new IllegalArgumentException(answer + " is not a valid answer");
         }
-        responses.add(response);
+        chosenAnswers.add(answer);
+        setFrequency(answer);
     }
 
     /** Public getter for question.
@@ -61,32 +66,104 @@ public class QuestionData {
      *
      * @return answers
      */
-    public List<String> getAnswers() {
-        return answers;
+    public List<String> getPossibleAnswers() {
+        return possibleAnswers;
     }
 
-    /** Get the frequency of an answer.
+    /** Do a chi-squared test for variance.
      *
-     * @param checkResponse the answer
-     * @return how many times that answer appears
+     * @return the p-value
      */
-    private int responseFrequency(final String checkResponse) {
-        if (!answers.contains(checkResponse)) {
-            throw new IllegalArgumentException(checkResponse + " is not a valid answer");
+    public double chiSquaredVariance() {
+        return 0;
+    }
+
+    private double averageFrequency() {
+        double sum = 0;
+        for (Frequency frequency : frequencies) {
+            sum += frequency.getFrequency();
         }
-        if (!responses.contains(checkResponse)) {
-            return 0;
+        return sum / (double) frequencies.size();
+    }
+
+    /** Recalculate frequencies.
+     *
+     */
+    private void setFrequencies() {
+        frequencies = new ArrayList<>(possibleAnswers.size());
+        for (int i = 0; i < possibleAnswers.size(); i++) {
+            frequencies.add(new Frequency(possibleAnswers.get(i)));
         }
-        int count = 0;
-        for (String response : responses) {
-            if (checkResponse.equals(response)) {
-                count++;
+    }
+
+    /** Recalculate the frequency of one answer.
+     *
+     * @param answer the answer to recalculate for
+     */
+    private void setFrequency(final String answer) {
+        for (Frequency frequency : frequencies) {
+            if (frequency.getAnswer().equals(answer)) {
+                frequency.setFrequency();
             }
         }
-        return count;
     }
 
-    //list of frequencies for each answer
+    /** Public getter for frequencies.
+     *
+     * @return frequencies
+     */
+    public List<Frequency> getFrequencies() {
+        return frequencies;
+    }
 
-    //chi-squared test for variance
+    /** Interior class that stores answers and their frequencies.
+     *
+     */
+    public class Frequency {
+        /** The answer. */
+        private String answer;
+
+        /** The answer's frequency. */
+        private int frequency;
+
+        /** Constructor.
+         *
+         * @param setAnswer the answer
+         */
+        Frequency(final String setAnswer) {
+            if (!possibleAnswers.contains(setAnswer)) {
+                throw new IllegalArgumentException(setAnswer + " is not a valid answer");
+            }
+            answer = setAnswer;
+            setFrequency();
+        }
+
+        /** Set the frequency for this answer. */
+        void setFrequency() {
+            frequency = 0;
+            if (chosenAnswers.contains(answer)) {
+                for (String chosenAnswer : chosenAnswers) {
+                    if (chosenAnswer.equals(answer)) {
+                        frequency++;
+                    }
+                }
+            }
+        }
+
+        /** Public getter for answer.
+         *
+         * @return answer
+         */
+        public String getAnswer() {
+            return answer;
+        }
+
+        /** Public getter for frequency.
+         *
+         * @return frequency
+         */
+        public int getFrequency() {
+            return frequency;
+        }
+    }
 }
