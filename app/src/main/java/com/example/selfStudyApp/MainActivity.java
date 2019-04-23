@@ -108,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
      */
     private void goToSetAnswer(int numberQuestions) {
         Log.d(TAG, "To Set Answer");
-        List<String> possibleAnswers = questionData.getPossibleAnswers();
+        setContentView(R.layout.content_set_answer);
 
+        List<String> possibleAnswers = questionData.getPossibleAnswers();
         if (possibleAnswers.size() < numberQuestions) {
             setContentView(R.layout.content_set_answer);
 
@@ -122,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 Editable text = answerInput.getText();
                 if (text != null) {
                     possibleAnswers.add(text.toString());
-                    goToSetAnswer(numberQuestions);
                 }
             });
         } else {
@@ -135,7 +135,18 @@ public class MainActivity extends AppCompatActivity {
     private void goToAnswerQuestion() {
         Log.d(TAG, "To Answer Question");
         setContentView(R.layout.content_answer_question);
-        //take answer input
+
+        //set up and populate spinner
+        Spinner answerSpinner = findViewById(R.id.answerSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.content_set_answer_number, questionData.getPossibleAnswers());
+        answerSpinner.setAdapter(adapter);
+
+        //when number is chosen
+        answerSpinner.setOnItemClickListener((parent, view, position, id) -> {
+            String selection = (String) answerSpinner.getSelectedItem();
+            Button answerSelectButton = MainActivity.this.findViewById(R.id.answerSelectButton);
+            answerSelectButton.setOnClickListener(w -> questionData.addAnswer(selection));
+        });
     }
 
     /** Take the user to the View Data page. */
