@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "SelfStudyApp:Main";
 
     /** Data for the current question. */
-    protected QuestionData questionData = new QuestionData();
+    private QuestionData questionData = new QuestionData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Take the user to the About page. */
-    protected void goToAbout() {
+    private void goToAbout() {
         Log.d(TAG, "To About");
         setContentView(R.layout.content_about);
     }
 
     /** Take the user to the Set Question page. */
-    protected void goToSetQuestion() {
+    private void goToSetQuestion() {
         Log.d(TAG, "To Set Question");
         setContentView(R.layout.content_set_question);
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /** Take the user to the Set Answer Number page. */
-    protected void goToSetAnswerNumber() {
+    private void goToSetAnswerNumber() {
         Log.d(TAG, "To Set Answer Number");
         setContentView(R.layout.content_set_answer_number);
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param numberQuestions how many questions to ask for
      */
-    protected void goToSetAnswer(int numberQuestions) {
+    private void goToSetAnswer(int numberQuestions) {
         Log.d(TAG, "To Set Answer");
         List<String> possibleAnswers = questionData.getPossibleAnswers();
 
@@ -126,19 +126,20 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } else {
+            questionData.setAnswers(possibleAnswers);
             goToSetQuestion();
         }
     }
 
     /** Take the user to the Answer Question page. */
-    protected void goToAnswerQuestion() {
+    private void goToAnswerQuestion() {
         Log.d(TAG, "To Answer Question");
         setContentView(R.layout.content_answer_question);
         //take answer input
     }
 
     /** Take the user to the View Data page. */
-    protected void goToViewData() {
+    private void goToViewData() {
         Log.d(TAG, "To View Data");
         setContentView(R.layout.content_view_data);
         //display data
