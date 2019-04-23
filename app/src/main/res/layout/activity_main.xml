@@ -15,29 +15,34 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/aboutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/about" />
+        android:text="@string/about"
+        android:textColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/setQuestionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/set_question" />
+        android:text="@string/set_question"
+        android:textColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/answerQuestionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/answer_question" />
+        android:text="@string/answer_question"
+        android:textColor="@color/colorPrimary" />
 
     <Button
         android:id="@+id/viewDataButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/view_data" />
+        android:text="@string/view_data"
+        android:textColor="@color/colorPrimary" />
 </LinearLayout>

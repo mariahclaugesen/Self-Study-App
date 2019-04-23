@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/answer_question"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorAccent" />
 
     <Spinner
         android:id="@+id/answerSpinner"
@@ -25,5 +26,6 @@
         android:id="@+id/answerSelectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select" />
+        android:text="@string/select"
+        android:textColor="@color/colorPrimary" />
 </LinearLayout>
