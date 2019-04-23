@@ -6,24 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SetAnswerNumber">
+    tools:context=".AnswerQuestion">
 
     <TextView
-        android:id="@+id/numberQuery"
+        android:id="@+id/answerQuestionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/number_query"
+        android:text="@string/answer_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Spinner
-        android:id="@+id/numberSpinner"
+        android:id="@+id/answerSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown" />
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/numberSelectButton"
+        android:id="@+id/answerSelectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/select" />

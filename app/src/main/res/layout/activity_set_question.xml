@@ -26,4 +26,10 @@
             android:hint="@string/question_hint" />
     </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/questionEntryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/set" />
+
 </LinearLayout>
