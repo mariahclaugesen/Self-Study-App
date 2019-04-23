@@ -8,7 +8,7 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/titleAnswerQuestion"
+        android:id="@+id/questionDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="279dp"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAnswerQuestion" />
+        app:layout_constraintTop_toBottomOf="@+id/questionDisplay" />
 
     <Button
         android:id="@+id/answerSelectButton"

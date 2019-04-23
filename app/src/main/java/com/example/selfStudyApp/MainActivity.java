@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.selfStudyApp.lib.QuestionData;
 
@@ -135,6 +136,10 @@ public class MainActivity extends AppCompatActivity {
     private void goToAnswerQuestion() {
         Log.d(TAG, "To Answer Question");
         setContentView(R.layout.content_answer_question);
+
+        //show the question
+        TextView questionDisplay = findViewById(R.id.questionDisplay);
+        questionDisplay.setText(questionData.getQuestion());
 
         //set up and populate spinner
         Spinner answerSpinner = findViewById(R.id.answerSpinner);
