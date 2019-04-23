@@ -112,7 +112,19 @@ public class MainActivity extends AppCompatActivity {
 
         if (possibleAnswers.size() < numberQuestions) {
             setContentView(R.layout.content_set_answer);
-            //prompt, get, and add question, then repeat
+
+            //set up answer input
+            TextInputEditText answerInput = findViewById(R.id.answerInput);
+            Button answerEntryButton = findViewById(R.id.answerEntryButton);
+
+            //when answer is entered
+            answerEntryButton.setOnClickListener(v -> {
+                Editable text = answerInput.getText();
+                if (text != null) {
+                    possibleAnswers.add(text.toString());
+                    goToSetAnswer(numberQuestions);
+                }
+            });
         } else {
             goToSetQuestion();
         }
