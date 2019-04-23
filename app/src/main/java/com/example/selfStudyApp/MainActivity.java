@@ -7,16 +7,24 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.Spinner;
 
 import com.example.selfStudyApp.lib.QuestionData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     /** Default logging tag for messages from the main activity. */
     private static final String TAG = "SelfStudyApp:Main";
 
     /** Data for the current question. */
-    protected QuestionData questionData;
+    protected QuestionData questionData = new QuestionData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
     /** Take the user to the About page. */
     protected void goToAbout() {
-        Log.d(TAG, "About button clicked");
+        Log.d(TAG, "To About");
         setContentView(R.layout.activity_about);
     }
 
     /** Take the user to the Set Question page. */
     protected void goToSetQuestion() {
-        Log.d(TAG, "Set Question button clicked");
+        Log.d(TAG, "To Set Question");
         setContentView(R.layout.activity_set_question);
 
         //set up question input
@@ -67,20 +75,60 @@ public class MainActivity extends AppCompatActivity {
 
     /** Take the user to the Set Answer Number page. */
     protected void goToSetAnswerNumber() {
+        Log.d(TAG, "To Set Answer Number");
+        setContentView(R.layout.activity_set_answer_number);
 
+        //the options for how many questions there are
+        List<String> numberOptions = new ArrayList<>();
+        for (int n = QuestionData.MIN_ANSWERS; n <= QuestionData.MAX_ANSWERS; n++) {
+            numberOptions.add(Integer.toString(n));
+        }
+
+        //set up and populate spinner
+        Spinner numberSpinner = findViewById(R.id.numberSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_set_answer_number, numberOptions);
+        numberSpinner.setAdapter(adapter);
+
+        //when number is chosen
+        numberSpinner.setOnItemClickListener((parent, view, position, id) -> {
+            String selection = (String) numberSpinner.getSelectedItem();
+            int number = Integer.valueOf(selection);
+            Button numberSelectButton = MainActivity.this.findViewById(R.id.numberSelectButton);
+            numberSelectButton.setOnClickListener(w -> {
+                if (number >= QuestionData.MIN_ANSWERS) {
+                    MainActivity.this.goToSetAnswer(number);
+                }
+            });
+        });
+    }
+
+    /** Take the user to the Set Answer page.
+     *
+     * @param numberQuestions how many questions to ask for
+     */
+    protected void goToSetAnswer(int numberQuestions) {
+        Log.d(TAG, "To Set Answer");
+        List<String> possibleAnswers = questionData.getPossibleAnswers();
+
+        if (possibleAnswers.size() < numberQuestions) {
+            setContentView(R.layout.activity_set_answer);
+            //prompt, get, and add question, then repeat
+        } else {
+            goToSetQuestion();
+        }
     }
 
     /** Take the user to the Answer Question page. */
     protected void goToAnswerQuestion() {
-        Log.d(TAG, "Answer Question button clicked");
-        Intent intent = new Intent(this, AnswerQuestion.class);
-        startActivity(intent);
+        Log.d(TAG, "To Answer Question");
+        setContentView(R.layout.activity_answer_question);
+        //take answer input
     }
 
     /** Take the user to the View Data page. */
     protected void goToViewData() {
-        Log.d(TAG, "View Data button clicked");
-        Intent intent = new Intent(this, ViewData.class);
-        startActivity(intent);
+        Log.d(TAG, "To View Data");
+        setContentView(R.layout.activity_view_data);
+        //display data
     }
 }
