@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
     /** Take the user to the About page. */
     protected void goToAbout() {
         Log.d(TAG, "To About");
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.content_about);
     }
 
     /** Take the user to the Set Question page. */
     protected void goToSetQuestion() {
         Log.d(TAG, "To Set Question");
-        setContentView(R.layout.activity_set_question);
+        setContentView(R.layout.content_set_question);
 
         //set up question input
         TextInputEditText questionInput = findViewById(R.id.questionInput);
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     /** Take the user to the Set Answer Number page. */
     protected void goToSetAnswerNumber() {
         Log.d(TAG, "To Set Answer Number");
-        setContentView(R.layout.activity_set_answer_number);
+        setContentView(R.layout.content_set_answer_number);
 
         //the options for how many questions there are
         List<String> numberOptions = new ArrayList<>();
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         //set up and populate spinner
         Spinner numberSpinner = findViewById(R.id.numberSpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.activity_set_answer_number, numberOptions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.content_set_answer_number, numberOptions);
         numberSpinner.setAdapter(adapter);
 
         //when number is chosen
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         List<String> possibleAnswers = questionData.getPossibleAnswers();
 
         if (possibleAnswers.size() < numberQuestions) {
-            setContentView(R.layout.activity_set_answer);
+            setContentView(R.layout.content_set_answer);
             //prompt, get, and add question, then repeat
         } else {
             goToSetQuestion();
@@ -121,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
     /** Take the user to the Answer Question page. */
     protected void goToAnswerQuestion() {
         Log.d(TAG, "To Answer Question");
-        setContentView(R.layout.activity_answer_question);
+        setContentView(R.layout.content_answer_question);
         //take answer input
     }
 
     /** Take the user to the View Data page. */
     protected void goToViewData() {
         Log.d(TAG, "To View Data");
-        setContentView(R.layout.activity_view_data);
+        setContentView(R.layout.content_view_data);
         //display data
     }
 }

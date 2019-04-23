@@ -2,52 +2,49 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/aboutLayout"
+    android:id="@+id/answerQuestionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|center_vertical"
-    tools:context=".About">
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/titleAbout"
+        android:id="@+id/titleAnswerQuestion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginTop="279dp"
         android:gravity="center"
-        android:text="@string/title_about"
+        android:text="@string/title_answer_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/contentAbout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/contentAbout"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/answerSpinner"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:gravity="center"
-        android:text="@string/content_about"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/titleAbout"
-        app:layout_constraintTop_toBottomOf="@+id/titleAbout" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleAnswerQuestion" />
+
+    <Button
+        android:id="@+id/answerSelectButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/entry_select"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerSpinner" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:itemIconTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-
 </android.support.constraint.ConstraintLayout>

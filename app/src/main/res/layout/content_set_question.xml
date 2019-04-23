@@ -2,50 +2,60 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/answerQuestionLayout"
+    android:id="@+id/questionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".AnswerQuestion">
+    android:gravity="center">
 
     <TextView
-        android:id="@+id/titleAnswerQuestion"
-        android:layout_width="0dp"
+        android:id="@+id/querySetQuestion"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="279dp"
+        android:layout_marginBottom="55dp"
         android:gravity="center"
-        android:text="@string/title_answer_question"
+        android:text="@string/query_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/questionInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/answerSpinner"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/questionInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleAnswerQuestion" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/questionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_question"
+            android:textColor="@color/colorPrimaryDark" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
-        android:id="@+id/answerSelectButton"
+        android:id="@+id/questionEntryButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/entry_select"
+        android:layout_marginTop="1dp"
+        android:text="@string/entry_set"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/questionInputLayout" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottomNav"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:itemIconTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
 </android.support.constraint.ConstraintLayout>

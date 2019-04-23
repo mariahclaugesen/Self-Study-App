@@ -5,8 +5,7 @@
     android:id="@+id/viewDataLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".ViewData">
+    android:gravity="center">
 
     <TextView
         android:id="@+id/titleViewData"
