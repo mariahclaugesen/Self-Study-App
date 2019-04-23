@@ -1,4 +1,4 @@
-package com.example.self_study_app;
+package com.example.selfStudyApp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

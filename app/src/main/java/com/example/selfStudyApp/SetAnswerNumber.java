@@ -1,13 +1,13 @@
-package com.example.self_study_app;
+package com.example.selfStudyApp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SetAnswer extends AppCompatActivity {
+public class SetAnswerNumber extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_answer);
+        setContentView(R.layout.activity_set_answer_number);
     }
 }

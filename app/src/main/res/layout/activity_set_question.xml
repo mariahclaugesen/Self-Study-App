@@ -9,11 +9,12 @@
     tools:context=".SetQuestion">
 
     <TextView
-        android:id="@+id/titleSetQuestion"
+        android:id="@+id/querySetQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
-        android:text="@string/title_set_question"
+        android:gravity="center"
+        android:text="@string/query_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/questionInputLayout"
