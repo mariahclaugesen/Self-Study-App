@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //set up navigation bar
-        final BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(v -> {
             int selectedId = bottomNav.getSelectedItemId();
             if (selectedId == R.id.navigation_about) {
@@ -47,6 +47,24 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+
+        //set welcome-screen values
+        if (questionData.getQuestion() != null) {
+            //Question
+            TextView questionDisplay = findViewById(R.id.questionDisplay);
+            questionDisplay.setText(questionData.getQuestion());
+
+            //Answer
+            List<String> possibleAnswers = questionData.getPossibleAnswers();
+            if (possibleAnswers.size() > 0) {
+                TextView answerDisplay = findViewById(R.id.answerDisplay);
+                StringBuilder answerBuilder = new StringBuilder(possibleAnswers.get(0));
+                for (int i = 1; i < possibleAnswers.size(); i++) {
+                    answerBuilder.append("\n").append(possibleAnswers.get(i));
+                }
+                answerDisplay.setText(answerDisplay.toString());
+            }
+        }
     }
 
     /** Take the user to the About page. */
