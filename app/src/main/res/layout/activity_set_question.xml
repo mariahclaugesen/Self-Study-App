@@ -9,10 +9,10 @@
     tools:context=".SetQuestion">
 
     <TextView
-        android:id="@+id/setQuestionTitle"
+        android:id="@+id/titleSetQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/set_question"
+        android:text="@string/title_set_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/questionInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/question_hint"
+            android:hint="@string/hint_question"
             android:textColor="@color/colorPrimaryDark" />
     </android.support.design.widget.TextInputLayout>
 
@@ -32,7 +32,7 @@
         android:id="@+id/questionEntryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/set"
+        android:text="@string/entry_set"
         android:textColor="@color/colorPrimary" />
 
 </LinearLayout>

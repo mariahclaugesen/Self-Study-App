@@ -9,10 +9,10 @@
     tools:context=".SetAnswer">
 
     <TextView
-        android:id="@+id/setAnswerTitle"
+        android:id="@+id/titleSetAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/set_answer"
+        android:text="@string/title_set_answer"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/answerInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/answer_hint"
+            android:hint="@string/hint_answer"
             android:textColor="@color/colorPrimaryDark" />
     </android.support.design.widget.TextInputLayout>
 
@@ -32,6 +32,6 @@
         android:id="@+id/answerEntryButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/set"
+        android:text="@string/entry_set"
         android:textColor="@color/colorPrimary" />
 </LinearLayout>

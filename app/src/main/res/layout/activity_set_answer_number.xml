@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/number_query"
+        android:text="@string/query_number"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent" />
 
@@ -27,6 +27,6 @@
         android:id="@+id/numberSelectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select"
+        android:text="@string/entry_select"
         android:textColor="@color/colorPrimary" />
 </LinearLayout>

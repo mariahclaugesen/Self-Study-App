@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".AnswerQuestion">
 
     <TextView
-        android:id="@+id/answerQuestionTitle"
+        android:id="@+id/titleAnswerQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/answer_question"
+        android:text="@string/title_answer_question"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent" />
 
@@ -26,6 +26,6 @@
         android:id="@+id/answerSelectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/select"
+        android:text="@string/entry_select"
         android:textColor="@color/colorPrimary" />
 </LinearLayout>

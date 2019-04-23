@@ -9,10 +9,10 @@
     tools:context=".ViewData">
 
     <TextView
-        android:id="@+id/viewDataTitle"
+        android:id="@+id/titleViewData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_data"
+        android:text="@string/title_view_data"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorAccent" />
 
